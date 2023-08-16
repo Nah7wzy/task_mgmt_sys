@@ -67,12 +67,12 @@ class ProjectItemsView(APIView):
         if serializer.is_valid():
             Project = None
             try:
-                Project = serializer.validated_data['Project_id']
-                song = serializer.validated_data['task_id']
+                project = serializer.validated_data['project_id']
+                task = serializer.validated_data['task_id']
             except (Project.DoesNotExist, Task.DoesNotExist) as error:
                 return Response(status=status.HTTP_404_NOT_FOUND)
 
-            if request.user.id != Project.owner.id:
+            if request.user.id != project.owner.id:
                 return Response(status=status.HTTP_403_FORBIDDEN)
 
             serializer.save()

@@ -8,8 +8,6 @@ class UserPublicSerializer(serializers.ModelSerializer):
         fields = ['id', 'username']
 
 class UserSerializer(serializers.ModelSerializer):
-    # favorites_playlist = serializers.SerializerMethodField()
-
     class Meta:
         model = User
         fields = ['id', 'password', 'email', 'username']
